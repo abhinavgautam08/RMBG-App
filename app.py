@@ -121,7 +121,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("""
 <div style='text-align: right'>
-Created by <a href='https://www.linkedin.com/in/abhinavgautam08' target='_blank'>rainbow[Abhinav Adarsh]</a>
+Created by <a href='https://www.linkedin.com/in/abhinavgautam08' target='_blank'>Abhinav Adarsh</a>
 </div>
 """, unsafe_allow_html=True)
 
