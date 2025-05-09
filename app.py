@@ -9,7 +9,6 @@ from io import BytesIO
 import requests
 from urllib.parse import urlparse
 
-
 net = BriaRMBG.from_pretrained("briaai/RMBG-1.4")
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 net.to(device)
@@ -46,7 +45,6 @@ def process(image):
     new_im = orig_image.copy()
     new_im.putalpha(pil_mask)
     
-   
     img_byte_arr = BytesIO()
     new_im.save(img_byte_arr, format='PNG')
     img_byte_arr.seek(0)  
@@ -64,15 +62,39 @@ def load_image_from_url(url):
     try:
         response = requests.get(url, stream=True, timeout=10)
         response.raise_for_status()
-        image = Image.open(BytesIO(response.content))
-        return image
+        
+        # Check for valid image content type
+        content_type = response.headers.get('content-type', '')
+        if not content_type.startswith('image/'):
+            st.error(f"URL does not point to a valid image (content-type: {content_type})")
+            return None
+            
+        try:
+            # Use a fresh BytesIO object to read the image
+            image_data = BytesIO(response.content)
+            
+            # Attempt to open and validate the image
+            image = Image.open(image_data)
+            
+            # Force loading the image to verify it's valid (won't work with verify() as that closes the file)
+            image.load()
+            
+            return image
+        except Exception as img_err:
+            st.error(f"Invalid image format: {img_err}")
+            return None
+            
+    except requests.exceptions.RequestException as req_err:
+        st.error(f"Request error: {req_err}")
+        return None
     except Exception as e:
         st.error(f"Error loading image from URL: {e}")
         return None
 
-
+# Streamlit UI
 st.set_page_config(page_title="Abhinav Adarsh", layout="centered")
 
+# Add custom CSS for the gradient animation color on title text
 st.markdown("""
     <style>
         @keyframes gradientAnimation {
@@ -113,36 +135,42 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-
+# Title with gradient animation on text color
 st.markdown('<div class="gradient-title">RMBG</div>', unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-
+# Updated description
 st.markdown("""
 <div style='text-align: right'>
-Created by <a href='https://www.linkedin.com/in/abhinavgautam08' target='_blank'>Abhinav Adarsh</a>
+Developed by <a href='https://www.linkedin.com/in/abhinavgautam08' target='_blank'>Abhinav Adarsh</a>
 </div>
 """, unsafe_allow_html=True)
 
-
+# Create tabs for upload methods
 tab1, tab2 = st.tabs(["UP Img", "Img URL"])
 
-
+# Tab 1: File Upload
 with tab1:
     uploaded_file = st.file_uploader("", type=["jpg", "png", "jpeg"])
     if uploaded_file:
-        image = Image.open(uploaded_file)
-        st.image(image, caption="Image (Original)", use_container_width=True)
-        st.write("Processing...")
-        
-       
-        img_bytes = process(image)
-        
-        st.image(img_bytes, caption="Image (RMBG)", use_container_width=True)
-        
-        st.download_button("Download", img_bytes, file_name="abhinavgautam08.(RMBG).png", mime="image/png")
+        try:
+            image = Image.open(uploaded_file)
+            st.image(image, caption="Image (Original)", use_container_width=True)
+            st.write("Processing...")
+            
+            # Get the processed image in PNG format
+            img_bytes = process(image)
+            
+            # Show the processed image
+            st.image(img_bytes, caption="Image (RMBG)", use_container_width=True)
+            
+            # Optional: Download button
+            st.download_button("Download", img_bytes, file_name="abhinavgautam08.(RMBG).png", mime="image/png")
+        except Exception as e:
+            st.error(f"Error processing uploaded image: {e}")
 
+# Tab 2: URL Input
 with tab2:
     url = st.text_input("Enter the URL of an image")
     if url:
@@ -150,13 +178,19 @@ with tab2:
             st.write("Downloading image...")
             image = load_image_from_url(url)
             if image:
-                st.image(image, caption="Image (Original)", use_container_width=True)
-                st.write("Processing...")
-             
-                img_bytes = process(image)
-                
-                st.image(img_bytes, caption="Image (RMBG)", use_container_width=True)
-                
-                st.download_button("Download", img_bytes, file_name="abhinavgautam08.(RMBG).png", mime="image/png")
+                try:
+                    st.image(image, caption="Image (Original)", use_container_width=True)
+                    st.write("Processing...")
+                    
+                    # Get the processed image in PNG format
+                    img_bytes = process(image)
+                    
+                    # Show the processed image
+                    st.image(img_bytes, caption="Image (RMBG)", use_container_width=True)
+                    
+                    # Optional: Download button
+                    st.download_button("Download", img_bytes, file_name="abhinavgautam08.(RMBG).png", mime="image/png")
+                except Exception as e:
+                    st.error(f"Error processing image from URL: {e}")
         else:
             st.error("Please enter a valid URL")
