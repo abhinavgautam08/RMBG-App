@@ -29,8 +29,8 @@ A powerful, user-friendly web application
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/rmbg-ai.git
-cd rmbg-ai
+git clone https://github.com/abhinavgautam08/RMBG-App.git
+cd RMBG-App
 ```
 
 2. Create and activate a virtual environment (optional but recommended):
@@ -44,20 +44,6 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 ```bash
 pip install -r requirements.txt
-```
-
-### Requirements
-
-Create a `requirements.txt` file with the following dependencies:
-
-```
-numpy
-torch
-torchvision
-Pillow
-streamlit
-requests
-briaai==1.4.0
 ```
 
 ## 🚀 Usage
@@ -83,7 +69,7 @@ The application will start and automatically open in your default web browser at
 ## 💻 Tech Stack
 
 - **Frontend & Backend**: Streamlit
-- **AI Model**: BriaRMBG 1.4
+- **Model**: RMBG 1.4
 - **Image Processing**: PyTorch, NumPy, PIL
 
 ## 🔮 How It Works
