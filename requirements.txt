@@ -1,0 +1,12 @@
+torch
+torchvision
+pillow
+numpy
+typing
+gitpython
+huggingface_hub
+safetensors
+streamlit
+nest_asyncio
+pyngrok
+qrcode
