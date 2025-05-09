@@ -1,11 +1,11 @@
-# RMBG AI - Image Background Removal Tool
+# RMBG - Image Background Removal Tool
 
 ![RMBG AI Demo](https://img.shields.io/badge/Demo-Live-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B)
 
-A powerful, user-friendly web application for automatic background removal from images using the [BriaRMBG](https://github.com/briaai/RMBG-1.4) AI model.
+A powerful, user-friendly web application 
 
 ## ✨ Features
 
@@ -95,16 +95,6 @@ The application uses the BriaRMBG model, which employs deep learning to identify
 3. Post-processing the model output to create a smooth alpha mask
 4. Applying the alpha mask to create a transparent background
 5. Serving the processed image to the user
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ## 📝 License
 
