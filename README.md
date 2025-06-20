@@ -2,7 +2,7 @@
 
 ![RMBG AI Demo](https://img.shields.io/badge/Demo-Live-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](https://github.com/abhinavgautam08/RMBG-App/blob/main/LICENSE)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B)
 
 A powerful, user-friendly web application 
