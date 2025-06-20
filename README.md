@@ -1,9 +1,9 @@
 # RMBG - Image Background Removal Tool
 
 ![RMBG AI Demo](https://img.shields.io/badge/Demo-Live-brightgreen)
-![Python](https://img.shields.io/badge/Python-3.7%2B-blue)
+[![Python](https://img.shields.io/badge/Python-3.7%2B-blue)](https://github.com/abhinavgautam08/RMBG-App/blob/main/app.py)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](https://github.com/abhinavgautam08/RMBG-App/blob/main/LICENSE)
-![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B)
+[![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B)](https://abhinavgautam08-rmbg.streamlit.app/)
 
 A powerful, user-friendly web application 
 
