@@ -2,7 +2,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 from torchvision.transforms.functional import normalize
-from briarmbg import BriaRMBG
+from rmbg import BriaRMBG
 from PIL import Image
 import streamlit as st
 from io import BytesIO
