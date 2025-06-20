@@ -91,12 +91,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Abhinav Adarsh**
 - LinkedIn: [abhinavgautam08](https://www.linkedin.com/in/abhinavgautam08)
 
-## 🙏 Acknowledgements
-
-- [BriaAI](https://github.com/briaai) for the RMBG-1.4 model
-- [Streamlit](https://streamlit.io/) for the wonderful web app framework
-- All open-source contributors who made this project possible
-
----
 
 Created ❤️ by [Abhinav Adarsh](https://www.linkedin.com/in/abhinavgautam08)
