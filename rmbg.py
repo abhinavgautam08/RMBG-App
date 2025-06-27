@@ -1,7 +1,7 @@
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-from huggingface_hub import PyTorchModelHubMixin
+import torch # (abhinavgautam08)
+import torch.nn as nn # (abhinavgautam08)
+import torch.nn.functional as F # (abhinavgautam08)
+from huggingface_hub import PyTorchModelHubMixin # (abhinavgautam08)
 
 class REBNCONV(nn.Module):
     def __init__(self,in_ch=3,out_ch=3,dirate=1,stride=1):
@@ -18,7 +18,7 @@ class REBNCONV(nn.Module):
 
         return xout
 
-## upsample tensor 'src' to have the same spatial size with tensor 'tar'
+## upsample tensor 'src' to have the same spatial size with tensor 'tar' (abhinavgautam08)
 def _upsample_like(src,tar):
 
     src = F.interpolate(src,size=tar.shape[2:],mode='bilinear')
@@ -26,7 +26,7 @@ def _upsample_like(src,tar):
     return src
 
 
-### RSU-7 ###
+### RSU-7(abhinavgautam08) ###
 class RSU7(nn.Module):
 
     def __init__(self, in_ch=3, mid_ch=12, out_ch=3, img_size=512):
@@ -109,7 +109,7 @@ class RSU7(nn.Module):
         return hx1d + hxin
 
 
-### RSU-6 ###
+### RSU-6(abhinavgautam08) ###
 class RSU6(nn.Module):
 
     def __init__(self, in_ch=3, mid_ch=12, out_ch=3):
@@ -178,7 +178,7 @@ class RSU6(nn.Module):
 
         return hx1d + hxin
 
-### RSU-5 ###
+### RSU-5(abhinavgautam08) ###
 class RSU5(nn.Module):
 
     def __init__(self, in_ch=3, mid_ch=12, out_ch=3):
@@ -236,7 +236,7 @@ class RSU5(nn.Module):
 
         return hx1d + hxin
 
-### RSU-4 ###
+### RSU-4(abhinavgautam08) ###
 class RSU4(nn.Module):
 
     def __init__(self, in_ch=3, mid_ch=12, out_ch=3):
@@ -284,7 +284,7 @@ class RSU4(nn.Module):
 
         return hx1d + hxin
 
-### RSU-4F ###
+### RSU-4F(abhinavgautam08) ###
 class RSU4F(nn.Module):
 
     def __init__(self, in_ch=3, mid_ch=12, out_ch=3):
@@ -371,7 +371,7 @@ class BriaRMBG(nn.Module, PyTorchModelHubMixin):
 
         self.stage6 = RSU4F(512,256,512)
 
-        # decoder
+        # decoder(abhinavgautam08)
         self.stage5d = RSU4F(1024,256,512)
         self.stage4d = RSU4(1024,128,256)
         self.stage3d = RSU5(512,64,128)
@@ -385,14 +385,14 @@ class BriaRMBG(nn.Module, PyTorchModelHubMixin):
         self.side5 = nn.Conv2d(512,out_ch,3,padding=1)
         self.side6 = nn.Conv2d(512,out_ch,3,padding=1)
 
-        # self.outconv = nn.Conv2d(6*out_ch,out_ch,1)
+        # self.outconv = nn.Conv2d(6*out_ch,out_ch,1)-(abhinavgautam08)
 
     def forward(self,x):
 
         hx = x
 
         hxin = self.conv_in(hx)
-        #hx = self.pool_in(hxin)
+        #hx = self.pool_in(hxin)-(abhinavgautam08)
 
         #stage 1
         hx1 = self.stage1(hxin)
