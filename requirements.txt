@@ -1,0 +1,7 @@
+torch~=2.8
+torchvision~=0.23
+pillow~=11.3
+numpy>=2.3,<2.4
+huggingface-hub~=0.34
+safetensors~=0.6
+streamlit~=1.48
