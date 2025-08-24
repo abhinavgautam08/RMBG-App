@@ -140,9 +140,8 @@ tab1, tab2 = st.tabs(["UP Img", "Img URL"])
 # Controls were moved from sidebar into tab-specific sections
 # Tab 1: File Upload(abhinavgautam08)
 with tab1:
-    # Quality/Memory control placed above the uploader
     quality = st.select_slider(
-        "Quality/Memory",
+        "Quality",
         options=["Low (512)", "Medium (768)", "High (1024)"],
         value="High (1024)"
     )
