@@ -79,7 +79,7 @@ def load_image_from_url(url):
         return None
 
 # Streamlit UI(abhinavgautam08)
-st.set_page_config(page_title="Abhinav Adarsh", layout="centered")
+st.set_page_config(page_title="RMBG", layout="centered")
 
 # Add custom CSS for the gradient animation color on title text(abhinavgautam08)
 st.markdown("""
