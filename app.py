@@ -130,7 +130,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 # Updated description(abhinavgautam08)
 st.markdown("""
 <div style='text-align: right'>
-Developed by <a href='https://www.linkedin.com/in/abhinavgautam08' target='_blank'>Abhinav Adarsh</a>
+Developed by <a href='https://abhinavgautam08.pages.dev' target='_blank'>Abhinav Adarsh</a>
 </div>
 """, unsafe_allow_html=True)
 
